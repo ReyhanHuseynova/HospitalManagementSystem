@@ -1,0 +1,121 @@
+﻿@model RoomMaster
+
+
+
+<div class="row">
+    <div class="col-12">
+        <a class="progressbar-front-text"><i class=" fa fa-stethoscope"></i> <span>HSM Hospital</span></a>
+        <h4 class="header-title">Room Master Create</h4>
+       
+            <ul class="breadcrumb">
+            <li class="breadcrumb-item"><i style="font-size:medium" class="bi bi-journal-medical"></i></li>
+            <li class="breadcrumb-item">Room Management </li>
+            <li class="breadcrumb-item">Room Master </li>
+            <li class="breadcrumb-item active">Room Master Create</li>
+        </ul>
+
+        <form method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-9">
+                <div class="form-outline">
+                    <label asp-for="RoomNumber" for="validationCustom03" class="form-label"></label>
+                    <input asp-for="RoomNumber" class="form-control" id="validationCustom03" required />
+                    <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                    <div class="invalid-feedback">The room number field is required.</div>
+
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="form-outline">
+                    <label asp-for="TotalBed" for="validationCustom03" class="form-label"></label>
+                    <input asp-for="TotalBed" class="form-control" id="validationCustom03" required />
+
+                    <div class="invalid-feedback">The bed field is required.</div>
+
+                </div>
+            </div>
+             <div class="col-md-9">
+                <div class="form-outline">
+
+                    <label for="heard">Select Room Categories</label>
+                    <select class="form-control" name="roomId">
+
+                        @foreach (RoomCategory roomCategory in ViewBag.Categories)
+                        {
+                            <option value="@roomCategory.Id">@roomCategory.CategoryName</option>
+                        }
+
+
+                    </select>
+
+                </div>
+             </div>
+             <div class="col-md-9">
+                <div class="form-outline">
+
+                    <label for="heard">Select Floor</label>
+                    <select class="form-control" name="floorId">
+
+                        @foreach (Floor floor in ViewBag.Floors)
+                        {
+                            <option value="@floor.Id">@floor.FloorNumber</option>
+                        }
+
+
+                    </select>
+
+
+
+
+                </div>
+             </div>
+            <div class="col-md-9">
+                <div class="form-outline">
+                    <label asp-for="Rate" for="validationCustom03" class="form-label"></label>
+                    <input asp-for="Rate" class="form-control" id="validationCustom03" required />
+
+                    <div class="invalid-feedback">The rate field is required..</div>
+
+                </div>
+            </div>
+            
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                    <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button style="margin-top:8px" class="btn btn-primary" type="submit"><i class="bi bi-upload"></i> Submit</button>
+                <a asp-action="Index" style="margin-top:8px" class="btn btn-dark"><i class="bi bi-backspace-fill"></i> Go Back</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+<script>
+    (function () {
+        'use strict'
+
+        var forms = document.querySelectorAll('.needs-validation')
+
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>

@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/images/stethoscope.png" type="image/ico" />
+
+    <title>HSM</title>
+
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+
+    <link href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href=" https://cdn.datatables.net/buttons/2.3.4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+
+    <!-- Chart -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- bootstrap-progressbar -->
+    <link href="~/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+
+
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+    <link href="~/css/effectStyleSheet.css" />
+
+
+</head>
+
+
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class=" fas fa-stethoscope"></i> <span>HSM</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+
+                        <div class="profile_pic">
+                            <img src="~/images/user.png" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>
+                                @User.Identity.Name
+
+                            </h2>
+                        </div>
+
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+
+                                <li>
+                                    <a asp-controller="Dashboard" asp-action="Index">
+                                        <i class=" fa fa-home"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Users" asp-action="Index">
+                                        <i class="fa fa-users"></i> Users
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Doctors" asp-action="Index">
+                                        <i class="fa fa-user-md"></i> Doctors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Departments" asp-action="Index">
+                                        <i style="font-size:large; margin-right:8px" class="bi bi-heart-pulse-fill"></i>Department Management
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a><i class="fa fa-male"></i>Patient Management <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a asp-controller="Patients" asp-action="Index">Patient Registration</a></li>
+                                        <li><a asp-controller="Appointments" asp-action="Index">Patient Appointment </a></li>
+                                        <li><a asp-controller="OPD" asp-action="Index">Patient OPD </a></li>
+
+                                    </ul>
+
+
+                                </li>
+
+
+
+
+                                <li>
+                                    <a>
+                                        <i style="font-size:large; margin-right:7px" class="bi bi-journal-medical"></i>Room Management<span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a asp-controller="RoomEnquiry" asp-action="Index">Room Enquiry</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="RoomCategories" asp-action="Index">Room Category</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="RoomMaster" asp-action="Index">Room Master</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="RoomBeds" asp-action="Index">Room Beds</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a><i style="font-size:large" class=" bi bi-bag-plus-fill"></i> Inventory Management<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a asp-controller="ItemCategories" asp-action="Index">Product Category</a></li>
+                                        <li><a asp-controller="Products" asp-action="Index">Products</a></li>
+                                        <li><a asp-controller="ItemStores" asp-action="Index">Product Store</a></li>
+                                        <li><a asp-controller="Suppliers" asp-action="Index">Supplier List</a></li>
+                                        <li><a asp-controller="Inventory" asp-action="Index">Product Stock</a></li>
+                                        <li><a asp-controller="Issue" asp-action="Index">Product Issue</a></li>
+
+                                    </ul>
+
+
+                                </li>
+
+
+
+
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" asp-controller="Account" asp-action="Login">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <nav class="nav navbar-nav">
+                        <ul class=" navbar-right">
+                            <li class="nav-item dropdown open" style="padding-left: 15px;">
+                                <a asp-controller="Mail" asp-action="Index">
+
+                                    <i style="font-size:large" class="bi bi-envelope"></i>
+                                </a>
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                    
+                                 <img src="~/images/user.png" alt="">@User.Identity.Name
+                                </a>
+                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Login">Login</a>
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Register">
+                                        <span>Register</span>
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:;">Help</a>
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Login"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                </div>
+                            </li>
+
+
+
+
+
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+
+            <div class="right_col" role="main">
+
+                @RenderBody()
+            </div>
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
+
+                <div class="indicator">
+                    <svg width="16px" height="12px">
+                        <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                        <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+
+
+
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="~/build/js/custom.min.js"></script>
+    @RenderSection("Scripts", false)
+
+    <script src=" https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/2.3.4/js/dataTables.buttons.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/2.3.4/js/buttons.html5.min.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/2.3.4/js/buttons.print.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.3.4/js/buttons.bootstrap4.min.js"></script>
+
+
+
+</body>
+</html>
+
+
+
+

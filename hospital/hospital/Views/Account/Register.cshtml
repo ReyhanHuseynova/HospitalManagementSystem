@@ -1,0 +1,101 @@
+﻿@model RegisterVM
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Register </title>
+
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="~/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form method="post">
+                        <h1>Create Account</h1>
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div>
+                            <input asp-for="Name" class="form-control" placeholder="Name" required="doldurun"  />
+                             <span asp-validation-for="Name" class="text-danger"></span>
+                            
+                        </div>
+                       
+                        <div>
+                            <input asp-for="Surname" class="form-control" placeholder="Surname" required="doldurun" />
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                        </div>
+                        <div>
+                            
+                            <input asp-for="Username" class="form-control" placeholder="Username" required="" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input asp-for="Email" class="form-control" placeholder="Email" required="" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input asp-for="Password" class="form-control" placeholder="Password" required="" />
+                             <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input asp-for="CheckPassword" class="form-control" placeholder="CheckPassword" required="" />
+                            <span asp-validation-for="CheckPassword" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-outline-primary"  >SIGN UP</button>
+                           
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                Already have an account?
+                                <a asp-action="Login"  class="to_register">Login </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class=" fa fa-stethoscope"></i>HSM</h1>
+                                <p>Patient registration provides the ability to start and edit a patient file at a hospital.
+                                    Most hospitals a front desk where patients have to register before starting medical interactions such as consultation,
+                                    lab, admission, procedures etc.
+
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+           
+         </div>
+    </div>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

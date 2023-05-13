@@ -1,0 +1,254 @@
+﻿@model List<Department>
+
+
+<div class="row">
+
+   <div class="col-12">
+       
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <h2>Departmens List</h2>
+                      <div class="x_title">
+                        
+                          
+                        <div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><i class="bi bi-heart-pulse-fill"></i></li>
+                                <li class="breadcrumb-item active">Department Management</li>
+                            </ul>
+
+
+                        </div>
+                        <div class="clearfix"></div>
+
+                            
+                      </div>
+                    @foreach (Department department in Model)
+                    {
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card project_widget">
+                                <div class="pw_img">
+                                    <img class="img-fluid" src="../images/@department.Image" alt="About the image">
+                                </div>
+                                <div class="pw_content">
+                                    <div class="pw_header">
+                                        <h6>@department.Name</h6>
+                                        <h6>Status</h6>
+                                        @if (department.IsDeactive)
+                                        {
+                                            <div class="badge badge-danger">Passiv</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="badge badge-success">Active</div>
+                                        }
+
+
+
+
+                                        @* <ul class="list-unstyled team-info margin-0 p-t-15">
+                                    <li class="m-r-15"><small>Team</small></li>
+                                    <li><img src="../assets/images/xs/avatar2.jpg" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" data-original-title="Dr. Avatar"></li>
+                                    <li><img src="../assets/images/xs/avatar3.jpg" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" data-original-title="Dr. Avatar"></li>
+                                    <li><img src="../assets/images/xs/avatar4.jpg" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" data-original-title="Dr. Avatar"></li>
+                                    <li><img src="../assets/images/xs/avatar6.jpg" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" data-original-title="Dr. Avatar"></li>
+                                    <li><a href="javascript:void(0);" title="Add Member"><i class="fa fa-plus-circle"></i></a></li>
+                                    </ul>*@
+                                    </div>
+                                    <div class="pw_meta">
+                                        <p>Who chooses to enjoy a pleasure that has consquences, or one who avoids a pain.[...]</p>
+
+                                        @*<button class="btn btn-outline-primary">Update</button>*@
+                                        <div class="d-flex justify-content-end">
+                                            <div style="margin-right:5px">
+                                                <a asp-action="Update" asp-route-id="@department.Id" class="btn btn-info"><i class=" fa fa-pencil"></i> Update</a>
+                                            </div>
+                                            <div style="margin-right:5px">
+                                                <a asp-action="Create" asp-route-id="@department.Id" class="btn btn-primary text-white"><i class=" fa fa-plus"></i> Create</a>
+                                            </div>
+
+                                            @if (department.IsDeactive)
+                                            {
+
+                                                <div style="margin-right:5px">
+                                                    <a asp-action="Activity" asp-route-id="@department.Id" class="btn btn-success"><i class=" fa fa-trash"></i> Activate</a>
+                                                </div>
+                                            }
+                                            else
+                                            {
+
+                                                <div style="margin-right:5px">
+                                                    <a asp-action="Activity" asp-route-id="@department.Id" class="btn btn-danger"><i class=" fa fa-trash"></i> Deactivate</a>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    }
+
+                   
+
+                </div>
+
+             </div>
+
+        </div>
+
+   </div>
+
+
+</div>
+
+
+
+<!-- page content -->
+
+<div class="col-12" role="main">
+    <div class="">
+       
+       
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <h2>Departmens List</h2>
+                    <div class="x_title">
+                        <div>
+
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                                <a asp-action="Create" class="btn btn-primary text-white">Create</a>
+                            </ul>
+
+
+                        </div>
+
+                        <div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><i class="bi bi-heart-pulse-fill"></i></li>
+                                <li class="breadcrumb-item active">Department Management</li>
+                            </ul>
+
+
+                        </div>
+                         <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+
+
+
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+
+                                   
+                                    <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Department Name</th>
+                                                <th>Status</th>
+                                                <th style="text-align:right">Action</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach (Department item in Model)
+                                            {
+                                               
+                                                <tr>
+                                                    <td>@item.Name</td>
+                                                   
+                                                    <td>
+                                                        @if (item.IsDeactive)
+
+
+                                                        {
+                                                            <div class="badge badge-danger">Passiv</div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="badge badge-success">Activ</div>
+                                                        }
+                                                    </td>
+
+
+                                                    <td>
+                                                        <div class="d-flex justify-content-end">
+                                                            <div style="margin-right:5px">
+                                                                <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-info">Update</a>
+                                                            </div>
+                                                            @*<div style="margin-right:5px">
+                                                                <a asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">Detail</a>
+                                                            </div>*@
+
+                                                            @if (item.IsDeactive)
+                                                            {
+
+                                                                <div style="margin-right:5px">
+                                                                    <a asp-action="Activity" asp-route-id="@item.Id" class="btn btn-success">Activate</a>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+
+                                                                <div style="margin-right:5px">
+                                                                    <a asp-action="Activity" asp-route-id="@item.Id" class="btn btn-danger">Deactivate</a>
+                                                                </div>
+                                                            }
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+ <script  type="text/javascript">
+    $(document).ready(function () {
+        $('#datatable-buttons').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'pdf', 'print','excel'
+            ]
+        });
+    });
+</script>
+
+
+
+
+

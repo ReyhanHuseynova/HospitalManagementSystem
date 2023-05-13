@@ -1,0 +1,91 @@
+﻿
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <h2>Patients List</h2>
+        <div class="x_title">
+            <div>
+
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                    <a asp-controller="Patients" asp-action="Create" class="btn btn-primary text-white"><i style="margin-right:3px" class=" fa fa-plus"></i>Create Patient</a>
+                </ul>
+
+
+            </div>
+
+            <div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><i class="fa fa-male"></i></li>
+                    <li class="breadcrumb-item active">Patient Management</li>
+                    <li class="breadcrumb-item active">Patient Appointment</li>
+                    <li class="breadcrumb-item active">Patients List</li>
+                </ul>
+
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+       
+                
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                   
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                  
+                                    
+                                    <th style="text-align:right">Action</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (Patient patient in ViewBag.Patients)
+                                {
+                                    <tr>
+
+                                        <td>@patient.Name</td>
+                                        <td>@patient.Surname</td>
+
+
+
+                                        <td>
+                                            <div class="d-flex justify-content-end">
+                                                <div style="margin-right:5px">
+                                                    <a asp-action="Create" class="btn btn-info">Make Appointment</a>
+                                                </div>
+
+
+
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                }
+                                
+                                  
+                                
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

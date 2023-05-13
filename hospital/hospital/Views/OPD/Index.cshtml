@@ -1,0 +1,135 @@
+﻿@model List<OPD>
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <h2>Patient OPD List</h2>
+        <div class="x_title">
+            <div>
+
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                    <a asp-action="Create" class="btn btn-primary text-white"><i class=" fa fa-plus"></i> Create</a>
+                </ul>
+
+
+            </div>
+
+            <div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><i class="fa fa-male"></i></li>
+                    <li class="breadcrumb-item active">Patient Management</li>
+                    <li class="breadcrumb-item active">Patient OPD </li>
+                </ul>
+
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                       
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>PatientCode</th>
+                                    <th>PatientFullName</th>
+                                    <th>DoctorFullName</th>
+                                    <th>Room Number</th>
+                                    <th>BedNumber</th>
+                                    <th>RoomPrice</th>
+                                    <th>DateAdmit</th>
+                                     <th>DateDischarge</th>
+                                    <th>Status</th>
+                                    <th style="text-align:right">Action</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                               
+
+                                @foreach (OPD opd in Model)
+                                {
+                                    <tr>
+
+
+                                        <td>@opd.PatientCode</td>
+                                        <td>@opd.PatientFullName</td>
+                                        <td>@opd.Doctor.Name @opd.Doctor.Surname</td>
+                                        <td>@opd.RoomBed.RoomMaster.RoomNumber</td>
+                                        <td>@opd.RoomBed.BedNumber</td>
+                                        <td>@opd.RoomBed.RoomMaster.Rate</td>
+                                        <td>@opd.DateAdmit </td>
+                                        <td>@opd.DateDischarge </td>
+                                       
+                                        <td>
+                                                @if (opd.RoomBed.IsMain)
+
+
+                                                {
+                                                <div class="badge badge-danger">Pending</div>
+                                                }
+                                                else
+                                                {
+                                                <div class="badge badge-success">Discharge</div>
+                                                }
+                                        </td>
+                                       
+                                        
+                                      
+
+                                        <td>
+                                            <div class="d-flex justify-content-end">
+                                                <div style="margin-right:5px">
+                                                    <a asp-action="Update" asp-route-id="@opd.Id" class="btn btn-info"><i class=" fa fa-pencil"></i> Update</a>
+                                                </div>
+                                               @* <div style="margin-right:5px">
+                                                    <a asp-action="Change" asp-route-id="@opd.Id" class="btn btn-success">CheckIn</a>
+                                                </div>*@
+
+                                                @if (opd.RoomBed.IsMain)
+                                                {
+
+                                                    <div style="margin-right:5px">
+                                                        <a asp-action="Change" asp-route-id="@opd.Id" class="btn btn-danger"><i class=" fa fa-hotel"></i> Change</a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+
+                                                    <div style="margin-right:5px">
+                                                        <a asp-action="Change" asp-route-id="@opd.Id" class="btn btn-success"><i class=" fa fa-hotel"></i> Changed</a>
+                                                    </div>
+                                                }
+
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+                                }
+                                
+                             
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

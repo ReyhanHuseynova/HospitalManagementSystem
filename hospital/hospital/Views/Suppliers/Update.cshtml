@@ -1,0 +1,109 @@
+﻿@model Supplier
+<div class="row">
+    <div class="col-12">
+        <a class="progressbar-front-text"><i class=" fa fa-stethoscope"></i> <span>HSM Hospital</span></a>
+        <h4 class="header-title">Supplier Update</h4>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><i style="font-size:large" class=" bi bi-bag-plus-fill"></i></li>
+            <li style="font-size:medium" class="breadcrumb-item">Inventory Management </li>
+            <li style="font-size:medium" class="breadcrumb-item">Supplier List  </li>
+            <li style="font-size:medium" class="breadcrumb-item active">Supplier Update
+                
+            </li>
+        </ul>
+
+
+
+        <form method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Name" for="validationCustom03" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" id="validationCustom03" required />
+
+                    <div class="invalid-feedback">Please provide a valid name.</div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Surname" for="validationCustom03" class="form-label"></label>
+
+                    <input asp-for="Surname" class="form-control" id="validationCustom03" required />
+                    <div class="invalid-feedback">Please provide a valid surname.</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Phone" for="validationCustom03" class="form-label"></label>
+
+                    <input asp-for="Phone" class="form-control" id="validationCustom03" required />
+                    <div class="invalid-feedback">Please provide a valid phone.</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Email" for="validationCustom03" class="form-label"></label>
+
+                    <input asp-for="Email" class="form-control" id="validationCustom03" required />
+                    <div class="invalid-feedback">Please provide a valid email.</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Address" for="validationCustom03" class="form-label"></label>
+
+                    <input asp-for="Address" class="form-control" id="validationCustom03" required />
+                    <div class="invalid-feedback">Please provide a valid address.</div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                    <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button style="margin-top:8px" class="btn btn-primary" type="submit"><i class="bi bi-upload"></i> Submit</button>
+                <a asp-action="Index" style="margin-top:8px" class="btn btn-dark"><i class="bi bi-backspace-fill"></i> Go Back</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+<script>
+    (function () {
+        'use strict'
+
+        var forms = document.querySelectorAll('.needs-validation')
+
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+
+
+

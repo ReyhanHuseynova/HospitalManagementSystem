@@ -1,0 +1,72 @@
+﻿@model Doctor
+<div>
+    <div>
+        <div class="row">
+            <div class="col-10">
+                <div class="card-body">
+                    <a class="progressbar-front-text"><i class=" fa fa-stethoscope"></i> <span>HSM Hospital</span></a>
+                    <h4 class="header-title">Doctor Update</h4>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><i style="font-size:large" class="fa fa-user-md"></i></li>
+                        <li class="breadcrumb-item">Doctors </li>
+                        <li class="breadcrumb-item active">Doctor Update</li>
+                    </ul>
+
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label asp-for="Name" class="col-form-label"></label>
+                            <input asp-for="Name" class="form-control">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Surname" class="col-form-label"></label>
+                            <input asp-for="Surname" class="form-control">
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Age" class="col-form-label"></label>
+                            <input asp-for="Age" class="form-control">
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Number" class="col-form-label"></label>
+                            <input asp-for="Number" class="form-control">
+                            <span asp-validation-for="Number" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select Department Name</label>
+                            <select class="form-control" name="depId">
+                                @foreach (Department department in ViewBag.Departments)
+                                {
+                                    @if (Model.DepartmentId == department.Id)
+                                    {
+                                        <option selected value="@department.Id">@department.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option  value="@department.Id">@department.Name</option>
+                                    }
+
+
+                                }
+                            </select>
+                        </div>
+
+
+                        <div class="col-12">
+                            <button style="margin-top:8px" class="btn btn-primary" type="submit"><i class="bi bi-upload"></i> Submit</button>
+                            <a asp-action="Index" style="margin-top:8px" class="btn btn-dark" type="submit"><i class="bi bi-backspace-fill"></i> Go Back</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+        }
+

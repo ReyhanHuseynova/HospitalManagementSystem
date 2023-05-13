@@ -1,0 +1,220 @@
+﻿@model Inventory
+<div class="row">
+    <div class="col-12">
+        <a class="progressbar-front-text"><i class=" fa fa-stethoscope"></i> <span>HSM Hospital</span></a>
+        <h4 class="header-title">Stock Create</h4>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><i style="font-size:large" class=" bi bi-bag-plus-fill"></i></li>
+            <li class="breadcrumb-item">Inventory Management </li>
+            <li class="breadcrumb-item">Product Stock </li>
+            <li class="breadcrumb-item active">Stock Create</li>
+        </ul>
+
+
+        <form method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+
+            <div  class="col-md-6" >
+                <div class="form-outline">
+
+                    <label  for="heard">Select Category Name</label>
+                    <select name="catId" id="Cat" class="form-control">
+
+                        <option>Category Select</option>
+                        @foreach (ItemCategory cat in ViewBag.Category)
+                        {
+                           
+                            <option value="@cat.Id">@cat.Name</option>
+                        }
+
+
+                    </select>
+
+                </div>
+
+            </div>
+            <div class="col-md-6" >
+                <div class="form-outline">
+
+                    <label  for="heard">Select Product Name</label>
+                    <select  class="form-control" id="Pro"  name="productId">
+
+                        @foreach (Product product in ViewBag.Products)
+                        {
+                            <option value="@product.Id">@product.Name</option>
+                        }
+
+
+                    </select>
+
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-outline">
+
+                    <label for="heard">Select Store Name</label>
+                    <select class="form-control" name="storeId">
+
+                        @foreach (ItemStore store in ViewBag.Store)
+                        {
+                            <option value="@store.Id">@store.StoreName</option>
+                        }
+
+
+                    </select>
+
+
+
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-outline">
+
+                    <label for="heard">Select Supplier FullName</label>
+                    <select  class="form-control"   name="supId">
+
+                        @foreach (Supplier supplier in ViewBag.Supplier)
+                        {
+                            <option value="@supplier.Id">@supplier.Name @supplier.Surname</option>
+                        }
+
+
+                    </select>
+
+                </div>
+
+            </div>
+             <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Quantity" for="validationCustom03" class="form-label"></label>
+
+                    <input asp-for="Quantity" class="form-control" id="validationCustom03" required />
+                    <div class="invalid-feedback">Please provide a valid quantity.</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Date" for="validationCustom03" class="form-label"></label>
+
+                    <input asp-for="Date" class="form-control" id="validationCustom03" required />
+                    <div class="invalid-feedback">Please provide a valid date.</div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                    <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button style="margin-top:8px" class="btn btn-primary" type="submit"><i class="bi bi-upload"></i> Submit</button>
+                <a asp-action="Index" style="margin-top:8px" class="btn btn-dark"><i class="bi bi-backspace-fill"></i> Go Back</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+<script>
+    (function () {
+        'use strict'
+
+        var forms = document.querySelectorAll('.needs-validation')
+
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/vendors/jquery/dist/jquery.js"></script>
+
+<script src="~/vendors/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+
+<script src="~/vendors/jquery.inputmask/dist/min/inputmask/jquery.inputmask.min.js"></script>
+
+<script src="~/vendors/jquery.inputmask/dist/min/inputmask/inputmask.min.js"></script>
+
+
+<script>
+    $(function () {
+        $("#Cat").change(function () {
+            var url = '@Url.Content("~/")' + "Inventory/getstatebyid";
+            var ddlsource = "#Cat";
+            $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
+                var items = '';
+                $("#Pro").empty();
+                $.each(data, function (i, row) {
+                    items += "<option value= '" + row.value + "' >" + row.text + "</option>"
+                });
+                $("#Pro").html(items)
+            })
+        });
+    });
+</script>
+
+
+
+@*<script>
+    $(function () {
+        $('#Category').change(function () {
+          $("#Product").empty();
+            $.ajax({
+                url: '/Inventory/Data',
+               
+                type: "POST",
+                dataType: "Json",
+                data: {id:$("#Category").val() },
+                success: function (data) {
+                    $("#Product").append("<option value='1'>@ViewBag.Product.Name</option>");
+                   $.each(data,(index,deyer)=>{
+                       $("#Product").append(`<option value="${deyer.value}">${deyer.text}</option`);
+                   });
+                    
+                }
+            });
+        });
+    });
+</script>*@
+
+
+@*<script>
+   $(function () {
+        $('#Category').change(function () {
+            var id = $('#Category').val();
+            $.ajax({
+                url: '/Inventory/Data',
+                data: { p: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#Product').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#Product').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</option>");
+                    }
+                }
+            });
+        });
+    });
+</script>*@
+

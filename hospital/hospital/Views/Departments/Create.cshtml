@@ -1,0 +1,85 @@
+﻿@model Department
+
+@*<div class="pos-f-t" style="margin-bottom: 25px">*@
+   
+    @*<nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>*@
+
+@*</div>*@
+
+<div class="row">
+    <div class="col-12">
+         @*<div class="collapse" id="navbarToggleExternalContent">*@
+        <div @*class="bg-dark p-4"*@>
+            <a class="progressbar-front-text"><i class=" fa fa-stethoscope"></i> <span>HSM Hospital</span></a>
+            <h2 class="text-muted">Create Department</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><i class="bi bi-heart-pulse-fill"></i></li>
+                <li class="breadcrumb-item">Department Management</li>
+                <li class="breadcrumb-item active"> Department Create</li>
+            </ul>
+        </div>
+    </div>
+
+        <form method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Photo" for="validationCustom03" class="form-label"></label>
+                    <input asp-for="Photo" accept="image/*" class="form-control" id="validationCustom03" required />
+                    <div class="invalid-feedback">Please provide a valid photo.</div>
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-outline">
+                    <label asp-for="Name" for="validationCustom03" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" id="validationCustom03" required />
+                    <div class="invalid-feedback">Please provide a valid name.</div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                    <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                </div>
+            </div>
+            <div class="col-12">
+            <button style="margin-top:8px" class="btn btn-primary" type="submit"><i class="bi bi-upload"></i> Submit</button>
+            <a asp-action="Index" style="margin-top:8px" class="btn btn-dark"><i class="bi bi-backspace-fill"></i> Go Back</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+<script>
+    (function () {
+        'use strict'
+
+        var forms = document.querySelectorAll('.needs-validation')
+
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>

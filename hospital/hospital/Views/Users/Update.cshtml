@@ -1,0 +1,80 @@
+﻿@model UpdateVM
+
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="x_panel">
+             <div class="card-header d-flex justify-content-between ">
+                <h5 class="mb-0">User Update</h5>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            </div>
+            <div class="x_content">
+                <br >
+                <form method="post" data-parsley-validate="" novalidate="">
+                    <div>
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" required="" >
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="Surname"></label>
+                        <input asp-for="Surname" class="form-control" data-parsley-trigger="change" required="">
+                        <span asp-validation-for="Surname" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="Username"></label>
+                        <input asp-for="Username" class="form-control" data-parsley-trigger="change" required="">
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" data-parsley-trigger="change" required="">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+
+                    <label for="heard"></label>
+                    <select name="roleName" class="form-control" required="">
+                        @if (Model.Role == "Admin")
+                        {
+
+                            <option selected value="Admin">Admin</option>
+                            <option value="Member">Member</option>
+                        }
+                        else
+                        {
+
+                            <option value="Admin">Admin</option>
+                            <option selected value="Member">Member</option>
+                        }
+
+                    </select>
+                    <div class="form-group row " style="margin-top: 10px ">
+                        <div class="col-md-9 col-sm-9  offset-md-3 d-flex justify-content-end">
+
+                            <button style="" type="submit" class="btn btn-primary"><i class="bi bi-upload"></i> Submit</button>
+                            <a asp-action="Index" class="btn btn-dark"><i class="bi bi-backspace-fill"></i> Go Back</a>
+
+                        </div>
+
+                    </div>
+
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
